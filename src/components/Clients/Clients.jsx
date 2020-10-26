@@ -27,6 +27,11 @@ class Clients extends Component {
 
   handleRowClicked = (row) => {
     console.log(`${row.name} was clicked!`);
+    alert("pippo");
+  };
+
+  editClientHandler = (row) => {
+    alert(row.target.id);
   };
 
   render() {
@@ -47,6 +52,7 @@ class Clients extends Component {
             data={this.state.data}
             handleChange={this.handleChange}
             handleRowClicked={this.handleRowClicked}
+            editClient={this.editClientHandler}
           ></MaterialTable>
         </div>
       </Fragment>

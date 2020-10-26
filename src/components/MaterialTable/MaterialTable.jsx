@@ -7,80 +7,79 @@ import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import DataTable from "react-data-table-component";
 import styles from "./MaterialTable.module.css";
 
-const columns = [
-  {
-    name: "Name",
-    selector: "name",
-    sortable: true,
-    grow: 2,
-  },
-  {
-    name: "Type",
-    selector: "type",
-    sortable: true,
-  },
-  {
-    name: "Calories (g)",
-    selector: "calories",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Fat (g)",
-    selector: "fat",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Carbs (g)",
-    selector: "carbs",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Protein (g)",
-    selector: "protein",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Sodium (mg)",
-    selector: "sodium",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Calcium (%)",
-    selector: "calcium",
-    sortable: true,
-    right: true,
-  },
-  {
-    name: "Iron (%)",
-    selector: "iron",
-    sortable: true,
-    right: true,
-  },
-  {
-    cell: () => (
-      <Button variant="contained" color="primary">
-        ELIMINA
-      </Button>
-    ),
-    button: true,
-  },
-  {
-    cell: () => (
-      <Button variant="contained" color="primary">
-        MODIFICA
-      </Button>
-    ),
-    button: true,
-    width: "110px",
-  },
-];
-
 const MaterialTable = (props) => {
+  const columns = [
+    {
+      name: "Name",
+      selector: "name",
+      sortable: true,
+      grow: 2,
+    },
+    {
+      name: "Type",
+      selector: "type",
+      sortable: true,
+    },
+    {
+      name: "Calories (g)",
+      selector: "calories",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Fat (g)",
+      selector: "fat",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Carbs (g)",
+      selector: "carbs",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Protein (g)",
+      selector: "protein",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Sodium (mg)",
+      selector: "sodium",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Calcium (%)",
+      selector: "calcium",
+      sortable: true,
+      right: true,
+    },
+    {
+      name: "Iron (%)",
+      selector: "iron",
+      sortable: true,
+      right: true,
+    },
+    {
+      cell: () => (
+        <Button variant="contained" color="primary">
+          ELIMINA
+        </Button>
+      ),
+      button: true,
+    },
+    {
+      cell: () => (
+        <Button variant="contained" color="primary" onClick={props.editClient}>
+          MODIFICA
+        </Button>
+      ),
+      button: true,
+      width: "110px",
+    },
+  ];
   const sortIcon = <ArrowDownward />;
   const selectProps = { indeterminate: (isIndeterminate) => isIndeterminate };
 
