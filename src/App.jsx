@@ -8,9 +8,6 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <p>FUTURO => Grafici</p>
-          <p>ORA => Singola pagina di insert clienti</p>
-          <p>Componente in lavorazione</p>
           <Clients></Clients>
         </Layout>
       </div>

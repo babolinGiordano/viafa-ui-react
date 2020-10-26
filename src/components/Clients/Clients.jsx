@@ -2,10 +2,15 @@ import React, { Component, Fragment } from "react";
 
 import styles from "./Clients.module.css";
 import Modal from "../UI/Modal/Modal";
+import MaterialTable from "../MaterialTable/MaterialTable";
+import makeData from "../../utils/MakeData";
 
 class Clients extends Component {
   state = {
     newClient: false,
+    selectedRows: [],
+    toggleCleared: false,
+    data: makeData(20),
   };
 
   newClientHandler = () => {
@@ -14,6 +19,14 @@ class Clients extends Component {
 
   newClientCancelHandler = () => {
     this.setState({ newClient: false });
+  };
+
+  handleChange = (state) => {
+    this.setState({ selectedRows: state.selectedRows });
+  };
+
+  handleRowClicked = (row) => {
+    console.log(`${row.name} was clicked!`);
   };
 
   render() {
@@ -29,7 +42,12 @@ class Clients extends Component {
           <button className={styles.NewClient} onClick={this.newClientHandler}>
             AGGIUNGI CLIENTE
           </button>
-          <div>Tabella clienti</div>
+          <MaterialTable
+            toggleCleared={this.state.toggleCleared}
+            data={this.state.data}
+            handleChange={this.handleChange}
+            handleRowClicked={this.handleRowClicked}
+          ></MaterialTable>
         </div>
       </Fragment>
     );
