@@ -5,6 +5,7 @@ import styles from "./Clients.module.css";
 import Modal from "../../components/UI/Modal/Modal";
 import MaterialTable from "../../components/MaterialTable/MaterialTable";
 import makeData from "../../utils/MakeData";
+import Client from "../../components/Client/Client";
 
 class Clients extends Component {
   state = {
@@ -48,7 +49,7 @@ class Clients extends Component {
           show={this.state.newClient}
           modalClosed={this.newClientCancelHandler}
         >
-          <p>FORM INSERIMENTO NUOVO CLIENTE</p>
+          <Client modalClosed={this.newClientCancelHandler}></Client>
         </Modal>
         <div className={styles.Clients}>
           <button className={styles.NewClient} onClick={this.newClientHandler}>
