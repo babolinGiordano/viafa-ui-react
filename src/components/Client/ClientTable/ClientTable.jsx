@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./MaterialTable.module.css";
+import styles from "./ClientTable.module.css";
 
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -63,6 +63,7 @@ const MaterialTable = (props) => {
       cell: (row) => <Modifica row={row}></Modifica>,
     },
   ];
+
   const sortIcon = <ArrowDownward />;
   const selectProps = { indeterminate: (isIndeterminate) => isIndeterminate };
 
@@ -86,6 +87,17 @@ const MaterialTable = (props) => {
     </Button>
   );
 
+  const customStyles = {
+    headCells: {
+      style: {
+        paddingLeft: "8px",
+        paddingRight: "8px",
+        fontWeight: "bold",
+        fontSize: "1rem",
+      },
+    },
+  };
+
   return (
     <Card style={{ height: "100%" }} className={styles.MaterialTable}>
       <DataTable
@@ -99,6 +111,7 @@ const MaterialTable = (props) => {
         onSelectedRowsChange={props.handleChange}
         clearSelectedRows={props.toggleCleared}
         pagination
+        customStyles={customStyles}
       />
     </Card>
   );

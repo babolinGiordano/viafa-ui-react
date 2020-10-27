@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import styles from "./Clients.module.css";
 
 import Modal from "../../components/UI/Modal/Modal";
-import MaterialTable from "../../components/MaterialTable/MaterialTable";
+import ClientTable from "../../components/Client/ClientTable/ClientTable";
 import makeData from "../../utils/MakeData";
 import Client from "../../components/Client/Client";
 
@@ -55,14 +55,14 @@ class Clients extends Component {
           <button className={styles.NewClient} onClick={this.newClientHandler}>
             AGGIUNGI CLIENTE
           </button>
-          <MaterialTable
+          <ClientTable
             toggleCleared={this.state.toggleCleared}
             data={this.state.data}
             handleChange={this.handleChange}
             handleRowClicked={this.handleRowClicked}
             editClient={this.editClientHandler}
             deleteClient={this.deleteClientHandler}
-          ></MaterialTable>
+          ></ClientTable>
         </div>
       </Fragment>
     );

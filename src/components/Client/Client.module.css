@@ -1,0 +1,29 @@
+.ClientButton {
+  background-color: #023e8a;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #caf0f8;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  margin-right: 1rem;
+}
+
+.ClientButton:hover,
+.ClientButton:active {
+  background-color: #457b9d;
+  border: 1px solid #caf0f8;
+  color: white;
+}
+
+.ClientButton:disabled {
+  background-color: #c7c6c6;
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+  color: #888888;
+}
+
+.ClientButton:not(:disabled) {
+  animation: enable 0.3s linear;
+}

@@ -1,7 +1,9 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "./Client.module.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +36,12 @@ const Client = (props) => {
         <TextField required label="Mail Referente" />
       </form>
       <div style={{ textAlign: "right" }}>
-        <button onClick={props.modalClosed}>CANCELLA</button>
-        <button>SALVA</button>
+        <button onClick={props.modalClosed} className={styles.ClientButton}>
+          CANCELLA
+        </button>
+        <button className={styles.ClientButton} disabled>
+          SALVA
+        </button>
       </div>
     </div>
   );
