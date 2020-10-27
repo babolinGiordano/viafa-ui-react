@@ -1,16 +1,17 @@
 import React, { Component, Fragment } from "react";
 
 import styles from "./Clients.module.css";
-import Modal from "../UI/Modal/Modal";
-import MaterialTable from "../MaterialTable/MaterialTable";
+
+import Modal from "../../components/UI/Modal/Modal";
+import MaterialTable from "../../components/MaterialTable/MaterialTable";
 import makeData from "../../utils/MakeData";
 
 class Clients extends Component {
   state = {
     newClient: false,
-    selectedRows: [],
+    selectedRows: null,
     toggleCleared: false,
-    data: makeData(20),
+    data: makeData(100),
   };
 
   newClientHandler = () => {
@@ -31,7 +32,13 @@ class Clients extends Component {
   };
 
   editClientHandler = (row) => {
-    alert(row.target.id);
+    this.setState({ selectedRows: row });
+    console.log(this.state.selectedRows);
+    this.setState({ newClient: true });
+  };
+
+  deleteClientHandler = (row) => {
+    alert(row.id);
   };
 
   render() {
@@ -53,6 +60,7 @@ class Clients extends Component {
             handleChange={this.handleChange}
             handleRowClicked={this.handleRowClicked}
             editClient={this.editClientHandler}
+            deleteClient={this.deleteClientHandler}
           ></MaterialTable>
         </div>
       </Fragment>

@@ -1,131 +1,103 @@
 import React from "react";
 
+import styles from "./MaterialTable.module.css";
+
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import EditIcon from "@material-ui/icons/Edit";
 import DataTable from "react-data-table-component";
-import styles from "./MaterialTable.module.css";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 
 const MaterialTable = (props) => {
   const columns = [
     {
-      name: "Name",
-      selector: "name",
+      name: "ID",
+      selector: "id",
+      sortable: false,
+      omit: true,
+    },
+    {
+      name: "FirstName",
+      selector: "firstName",
       sortable: true,
       grow: 2,
     },
     {
-      name: "Type",
-      selector: "type",
+      name: "LastName",
+      selector: "lastName",
       sortable: true,
     },
     {
-      name: "Calories (g)",
-      selector: "calories",
-      sortable: true,
-      right: true,
-    },
-    {
-      name: "Fat (g)",
-      selector: "fat",
+      name: "Age",
+      selector: "age",
       sortable: true,
       right: true,
     },
     {
-      name: "Carbs (g)",
-      selector: "carbs",
+      name: "Visits",
+      selector: "visits",
       sortable: true,
       right: true,
     },
     {
-      name: "Protein (g)",
-      selector: "protein",
+      name: "Progress",
+      selector: "progress",
       sortable: true,
       right: true,
     },
     {
-      name: "Sodium (mg)",
-      selector: "sodium",
+      name: "Status",
+      selector: "status",
       sortable: true,
       right: true,
     },
     {
-      name: "Calcium (%)",
-      selector: "calcium",
-      sortable: true,
-      right: true,
-    },
-    {
-      name: "Iron (%)",
-      selector: "iron",
-      sortable: true,
-      right: true,
-    },
-    {
-      cell: () => (
-        <Button variant="contained" color="primary">
-          ELIMINA
-        </Button>
-      ),
       button: true,
+      cell: (row) => <Elimina row={row}></Elimina>,
     },
     {
-      cell: () => (
-        <Button variant="contained" color="primary" onClick={props.editClient}>
-          MODIFICA
-        </Button>
-      ),
       button: true,
-      width: "110px",
+      cell: (row) => <Modifica row={row}></Modifica>,
     },
   ];
   const sortIcon = <ArrowDownward />;
   const selectProps = { indeterminate: (isIndeterminate) => isIndeterminate };
 
-  // const deleteAll = () => {
-  //   const { selectedRows } = this.state;
-  //   const rows = selectedRows.map((r) => r.name);
+  const Modifica = ({ row }) => (
+    <IconButton
+      color="primary"
+      component="span"
+      onClick={() => props.editClient(row)}
+    >
+      <EditIcon />
+    </IconButton>
+  );
 
-  //   if (window.confirm(`Are you sure you want to delete:\r ${rows}?`)) {
-  //     this.setState((state) => ({
-  //       toggleCleared: !state.toggleCleared,
-  //       data: differenceBy(state.data, state.selectedRows, "name"),
-  //     }));
-  //   }
-  // };
-
-  // const deleteOne = (row) => {
-  //   if (window.confirm(`Are you sure you want to delete:\r ${row.name}?`)) {
-  //     const { data } = this.state;
-  //     const index = data.findIndex((r) => r === row);
-
-  //     this.setState((state) => ({
-  //       toggleCleared: !state.toggleCleared,
-  //       data: [...state.data.slice(0, index), ...state.data.slice(index + 1)],
-  //     }));
-  //   }
-  // };
-
-  // const { data, toggleCleared } = this.state;
+  const Elimina = ({ row }) => (
+    <Button
+      variant="contained"
+      color="secondary"
+      onClick={() => props.deleteClient(row)}
+    >
+      <DeleteIcon />
+    </Button>
+  );
 
   return (
     <Card style={{ height: "100%" }} className={styles.MaterialTable}>
       <DataTable
-        title="Desserts"
+        title="Lista Clienti"
         columns={columns}
         data={props.data}
-        selectableRows
         highlightOnHover
-        defaultSortField="name"
-        // actions={actions}
-        // contextActions={contextActions(this.deleteAll)}
         sortIcon={sortIcon}
         selectableRowsComponent={Checkbox}
         selectableRowsComponentProps={selectProps}
         onSelectedRowsChange={props.handleChange}
         clearSelectedRows={props.toggleCleared}
-        onRowClicked={props.handleRowClicked}
         pagination
       />
     </Card>

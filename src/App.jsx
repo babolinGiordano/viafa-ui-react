@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Layout from "./containers/Layout/Layout";
-import Clients from "./components/Clients/Clients";
+import Clients from "./containers/Clients/Clients";
 
 class App extends Component {
   render() {
