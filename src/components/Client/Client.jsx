@@ -20,11 +20,7 @@ const Client = (props) => {
     <div>
       <h1>NUOVO CLIENTE</h1>
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField
-          id="standard-basic"
-          required
-          label="Ragione Sociale Azienda"
-        />
+        <TextField required label="Ragione Sociale Azienda" />
         <TextField required label="Indirizzo" />
         <TextField required label="Citta'" />
         <TextField required label="CAP" />

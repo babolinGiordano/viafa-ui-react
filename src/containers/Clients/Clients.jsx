@@ -12,7 +12,7 @@ class Clients extends Component {
     newClient: false,
     selectedRows: null,
     toggleCleared: false,
-    data: makeData(100),
+    data: makeData(20),
   };
 
   newClientHandler = () => {
